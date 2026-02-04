@@ -50,9 +50,19 @@ class Quiz {
     companion object StudentProgress {
         var total: Int = 10
         var answered: Int = 3
+}
+
+val Quiz.StudentProgress.progressText: String
+    get() = "${answered} of ${total} answered"
+
+fun Quiz.StudentProgress.printProgressBar() {
+    repeat(Quiz.answered) { print(" ▓") }
+    repeat(Quiz.answered) { print(" ▒") }
+    println()
+    prinln(Quiz.progressText)
     }
 }
 
 fun main() {
-    println("${Quiz.answered} of ${Quiz.total} answered.")
+    Quiz.printProgressBar
 }
